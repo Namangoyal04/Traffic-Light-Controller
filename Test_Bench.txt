@@ -1,20 +1,20 @@
 
 module testbench ;
 reg start, clk;
-reg [6:0]traffic_sec_EW;
-reg [4:0]no_traffic_sec_EW;
+reg [6:0]no_traffic_sec_EW;
+reg [4:0]traffic_sec_EW;
 
-datapath lnt(clr_G,inc_G,clr_Y,inc_Y,clr_R,inc_R,sig_1to2,sig_2to3,sig_3to1,clk,traffic_sec_EW,no_traffic_sec_EW);
+datapath lnt(clr_G,inc_G,clr_Y,inc_Y,clr_R,inc_R,sig_1to2,sig_2to3,sig_3to1,clk,no_traffic_sec_EW,traffic_sec_EW);
 controlpath cnt(clr_G,inc_G,clr_Y,inc_Y,clr_R,inc_R,sig_1to2,sig_2to3,sig_3to1,clk,start);
 
 initial 
 begin
 clk=1'b0;
 start = 1'b1;
-traffic_sec_EW=6'd35;
-#203 no_traffic_sec_EW=5'd12;
-     traffic_sec_EW=6'd18;
-#210  no_traffic_sec_EW=5'd31;
+no_traffic_sec_EW=6'd35;
+#203 traffic_sec_EW=5'd12;
+     no_traffic_sec_EW=6'd18;
+#210 traffic_sec_EW=5'd31;
      
 #150 $finish ;
 end 
